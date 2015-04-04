@@ -20,7 +20,7 @@ object Application extends Controller {
     } else {
       // React expects `window` or `global` to exist. Create a `global` pointing
       // to Nashorn's context to give React a place to define its global namespace.
-      engine.eval("var global = this;")
+      engine.eval("var global = this; var console = {log: print, warn: print, error: print};")
 
       // Evaluate React and the application code.
       engine.eval(new FileReader("target/web/web-modules/main/webjars/lib/react/react-with-addons.js"))
